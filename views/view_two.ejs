@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>From view_two.ejs</h1>
+    
+    <% for( let i = 0; i < 10; i++ ) { %>
+        <h2>My name is <%= name %> - <%= i %></h2>
+    <% } %>
+
+    <% if (name == "zakaria") { %>
+        <h1 style="color: green;">Right</h1>
+    <% } else { %>
+        <h1 style="color: red;">Wrong</h1>
+    <% } %>
+     
+</body>
+</html
