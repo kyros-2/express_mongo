@@ -11,7 +11,10 @@ const Car = require("./models/Car");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose
-  .connect(process.env.DB)
+  .connect(
+    process.env.DB ||
+      "mongodb+srv://kyros:2IaesiQfesCdFlj8@learnmongo.nbnuvai.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Success");
   })
