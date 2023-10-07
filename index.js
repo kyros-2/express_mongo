@@ -8,7 +8,10 @@ const bodyParser = require("body-parser");
 const Product = require("./models/Product");
 const Car = require("./models/Car");
 
+const productRouter = require("./routes/product");
+
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 mongoose
   .connect(process.env.MONGO_DB)
@@ -18,8 +21,6 @@ mongoose
   .catch((err) => {
     console.log("Error : " + err);
   });
-
-app.use(express.json());
 
 const HTML_tag = (text, color) => {
   return `<h1 style="color: ${color};">${text}</h1>`;
@@ -130,6 +131,9 @@ app.get("/showproducts", async (req, res) => {
   const products = await Product.find();
   res.render("products.ejs", { products });
 });
+
+// external routes and controller :
+app.use("/product", productRouter);
 
 // Any path
 app.get("/*", (req, res) => {
