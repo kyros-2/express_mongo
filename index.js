@@ -11,14 +11,12 @@ const Car = require("./models/Car");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose
-  .connect(
-    "mongodb+srv://kyros:2IaesiQfesCdFlj8@learnmongo.nbnuvai.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_DB)
   .then(() => {
     console.log("Success");
   })
-  .catch(() => {
-    console.log("Error");
+  .catch((err) => {
+    console.log("Error : " + err);
   });
 
 app.use(express.json());
@@ -138,4 +136,7 @@ app.get("/*", (req, res) => {
   res.send("Not found");
 });
 
-app.listen(3000);
+let PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Running on port : " + PORT);
+});
