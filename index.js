@@ -12,8 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose
   .connect(
-    process.env.DB ||
-      "mongodb+srv://kyros:2IaesiQfesCdFlj8@learnmongo.nbnuvai.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://kyros:2IaesiQfesCdFlj8@learnmongo.nbnuvai.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("Success");
@@ -139,7 +138,4 @@ app.get("/*", (req, res) => {
   res.send("Not found");
 });
 
-let port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log("Running on localhost:" + port);
-});
+app.listen(3000);
